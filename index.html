@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fashion Euphoria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="loader">
+  <div class="inner-loader">
+    <h1><span>Fashion</span><span>Euphoria</span></h1>
+    <div class="underline"></div>
+  </div>
+</div>
+<nav class="topbar">
+  <div class="topbar-left">
+    <img src="logo.png" class="topbar-logo">
+    <div class="topbar-links">
+      <span>Home</span>
+      <span>M-ArUco</span>
+      <span>Events</span>
+      <span>Projects</span>
+      <span>Galleries</span>
+      <span>Docs</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="feature-badge">Feature <b>Open</b></span>
+    <button class="icon-btn">⭳</button>
+    <button class="icon-btn">🔍</button>
+    <button class="icon-btn">👤</button>
+  </div>
+</nav>
+<header class="hero">
+  <video id="heroVideo" src="FASHION EUPHORIA (1) (1) (1).mp4" autoplay muted playsinline loop></video>
+  <button id="muteToggle" class="mute-btn" aria-label="Toggle sound">
+  🔇
+</button>
+</header>
+<section class="title-section reveal">
+  <canvas id="bg"></canvas>
+  <div class="hero-text">
+    <h1 class="impact-title">Fashion<br>Euphoria</h1>
+    <div class="countdown">
+      <span id="mo">00</span>mo
+      <span id="d">00</span>d
+      <span id="h">00</span>h
+      <span id="m">00</span>m
+      <span id="s">00</span>s
+    </div>
+    <a href="register.html" class="btn">Register Now</a>
+  </div>
+</section>
+<section class="gallery-section reveal">
+  <h2 class="section-title impact-title">Moments From The Ramp</h2>
+  <div class="gallery-grid">
+    <img src="s1.jpg">
+    <img src="s2.jpg">
+    <img src="s3.jpg">
+    <img src="s4.jpg">
+    <img src="s5.jpg">
+    <a href="gallery.html" class="gallery-more">
+      <span>+ View More</span>
+    </a>
+  </div>
+</section>
+<section class="brochure reveal">
+  <h2 class="section-title impact-title">Event Brochure</h2>
+  <p>Download the complete event brochure</p>
+<a href="brochure.pdf" download class="btn">Download Brochure</a>
+</section>
+<section class="sponsors reveal">
+  <h2 class="section-title impact-title">Our Partners</h2>
+  <div class="wheel-wrap">
+    <div class="wheel" id="wheel">
+      <div class="card" data-title="VLCC" data-desc="Official Wellness Partner">
+        <img src="s1.jpg">
+      </div>
+      <div class="card" data-title="Lakmé" data-desc="Beauty Partner">
+        <img src="s2.jpg">
+      </div>
+      <div class="card" data-title="G Studios" data-desc="Creative Partner">
+        <img src="s3.jpg">
+      </div>
+      <div class="card" data-title="Lakmé" data-desc="Beauty Partner">
+        <img src="s2.jpg">
+      </div>
+<div class="sponsor-info" id="sponsorInfo">
+  <h3></h3>
+  <p></p>
+</div>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="logo1.png" class="footer-logo">
+      <p class="footer-desc">Subscribe to our newsletter</p>
+      <input placeholder="Enter your email">
+    </div>
+    <div>
+      <h4>Organisation</h4>
+      <p>Core Members</p>
+      <p>Alumni</p>
+      <p>Collaborate</p>
+    </div>
+    <div>
+      <h4>Events</h4>
+      <p>Upcoming</p>
+      <p>Past Events</p>
+    </div>
+    <div>
+      <h4>Galleries</h4>
+      <p>Art</p>
+      <p>Photography</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Fashion Euphoria</span>
+    <span>Sitemap · Privacy Policy · Media Kit</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
