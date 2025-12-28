@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Artworks · Fashion Euphoria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+body { overflow: hidden; }
+.gallery-page {
+  padding: 160px 10% 120px;
+}
+.images {
+  column-count: 4;
+  column-gap: 24px;
+  margin-top: 80px;
+}
+.image-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: .8s ease;
+}
+.image-item.show {
+  transform: none;
+  opacity: 1;
+}
+.image-item img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) brightness(.7);
+  transition: transform .8s ease, filter .6s ease;
+  object-fit: cover;
+  object-position: top center;
+  object-position: center 30%;
+}
+.image-item:hover img {
+  filter: none;
+  transform: scale(1.08);
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,5,5,.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 18px;
+  box-shadow: 0 40px 120px rgba(0,0,0,.8);
+  animation: zoomIn .5s ease;
+}
+@keyframes zoomIn {
+  from { transform: scale(.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 32px;
+  cursor: pointer;
+  opacity: .7;
+}
+.lightbox-close:hover { opacity: 1; }
+@media (max-width: 1200px) {
+  .images { column-count: 3; }
+}
+@media (max-width: 768px) {
+  .images { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .images { column-count: 1; }
+}
+</style>
+</head>
+<body>
+<div id="loader">
+  <div class="inner-loader">
+    <h1><span>Fashion</span><span>Euphoria</span></h1>
+    <div class="underline"></div>
+  </div>
+</div>
+<nav class="topbar">
+  <div class="topbar-left">
+    <img src="logo.png" class="topbar-logo">
+    <div class="topbar-links">
+      <span onclick="location.href='index.html'">Home</span>
+      <span>M-ArUco</span>
+      <span>Events</span>
+      <span>Projects</span>
+      <span>Galleries</span>
+      <span>Docs</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="feature-badge">Feature <b>Open</b></span>
+    <button class="icon-btn">⭳</button>
+    <button class="icon-btn">🔍</button>
+    <button class="icon-btn">👤</button>
+  </div>
+</nav>
+<section class="gallery-page reveal">
+  <h1 class="section-title impact-title">Glimpses from the Ramp</h1>
+  <div class="images">
+    <div class="image-item"><img src="g1.jpg"></div>
+    <div class="image-item"><img src="g2.jpg"></div>
+    <div class="image-item"><img src="g3.jpg"></div>
+    <div class="image-item"><img src="g4.jpg"></div>
+    <div class="image-item"><img src="g5.jpg"></div>
+    <div class="image-item"><img src="s1.jpg"></div>
+    <div class="image-item"><img src="s2.jpg"></div>
+    <div class="image-item"><img src="s3.jpg"></div>
+    <div class="image-item"><img src="https://drive.google.com/file/d/1SY1b_LOU4XvKzrv8W3wWoAa1Qe9Zo0lJ/view?usp=drive_link"></div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="close">✕</span>
+  <img id="lightboxImg">
+</div>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="logo1.png" class="footer-logo">
+      <p class="footer-desc">Subscribe to our newsletter</p>
+      <input placeholder="Enter your email">
+    </div>
+    <div>
+      <h4>Organisation</h4>
+      <p>Core Members</p>
+      <p>Alumni</p>
+      <p>Collaborate</p>
+    </div>
+    <div>
+      <h4>Events</h4>
+      <p>Upcoming</p>
+      <p>Past Events</p>
+    </div>
+    <div>
+      <h4>Galleries</h4>
+      <p>Art</p>
+      <p>Photography</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Fashion Euphoria</span>
+    <span>Sitemap · Privacy Policy · Media Kit</span>
+  </div>
+</footer>
+<script>
+const loader = document.getElementById("loader");
+document.body.style.overflow = "hidden";
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.remove();
+      document.body.style.overflow = "auto";
+    }, 600);
+  }, 2600);
+});
+const obs = new IntersectionObserver(e=>{
+  e.forEach(i=> i.isIntersecting && i.target.classList.add("show"));
+},{threshold:.15});
+document.querySelectorAll(".reveal, .image-item").forEach(el=>obs.observe(el));
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+document.querySelectorAll(".image-item img").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+    document.body.style.overflow = "hidden";
+  });
+});
+document.getElementById("close").onclick = () => {
+  lightbox.classList.remove("show");
+  document.body.style.overflow = "auto";
+};
+lightbox.onclick = e => {
+  if(e.target === lightbox) {
+    lightbox.classList.remove("show");
+    document.body.style.overflow = "auto";
+  }
+};
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".image-item img").forEach(img=>{
+    const r = img.getBoundingClientRect();
+    const offset = (window.innerHeight - r.top) * 0.04;
+    img.style.transform = `translateY(${offset}px) scale(1.08)`;
+  });
+});
+</script>
+</body>
+</html>
